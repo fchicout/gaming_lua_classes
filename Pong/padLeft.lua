@@ -17,10 +17,20 @@ padL = {
     end
     
     if dy ~= 0 then
-      --self.y = (self.y + dy);
       local colisions;
       self.x, self.y, colisions, len = world:move(self, self.x, self.y + dy);
     end
-  end
+  end;
+  
+  draw = function(self)
+    love.graphics.setColor(self.color);
+    love.graphics.rectangle("fill", self.x, self.y, self.w, self.h);
+  end;
+  
+  load = function(self)
+    world:add(self, self.x, self.y, self.w, self.h);
+  end;
+  
+  
   
 };
