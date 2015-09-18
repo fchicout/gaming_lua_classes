@@ -1,3 +1,20 @@
+function colisionFilter(item, other)
+  --if other.class.name == "corner" or other.class.name == "padL" or other.class.name == "padR" then
+    return "bounce";
+  --end
+end
+
+--function tableName(tbl)
+--  assert(type(tbl)=="table", "tbl must be a table")
+--    for n, v in getfenv() do
+--        if v == tbl then
+--            return n
+--        end
+--    end
+--    return nil
+--end
+
+
 function deepcopy(orig)
     local orig_type = type(orig)
     local copy

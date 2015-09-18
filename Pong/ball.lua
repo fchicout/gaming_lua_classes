@@ -1,9 +1,10 @@
 ball = {
-  x = math.random(200,500);
-  y = math.random(200,500);
+  x = 400;
+  y = 300;
   radius = 15;
-  vx = math.random(200,500);
-  vy = math.random(200,500);
+  vx = 100;
+  vy = 100;
+  bounciness = 1;
   color = {0,255,0};
   
   
@@ -25,7 +26,15 @@ ball = {
     
     if dx ~= 0.0 or dy ~= 0.0 then
       local colisions;
-      self.x, self.y, colisions, len = world:move(self, self.x + dx, self.y + dy, "bounce");
-    end
+      self.x, self.y, colisions, len = world:move(self, self.x + dx, self.y + dy, colisionFilter);
+      if len > 0 then
+        if (colisions[1].normal.x < 0 and self.vx > 0) or (colisions[1].normal.x > 0 and self.vx < 0) then
+          self.vx = -self.vx * self.bounciness
+        end;
+        if (colisions[1].normal.y < 0 and self.vy > 0) or (colisions[1].normal.y > 0 and self.vy < 0) then
+          self.vy = -self.vy * self.bounciness
+        end;
+      end;
+    end;
   end;
 }
