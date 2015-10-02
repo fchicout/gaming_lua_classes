@@ -1,38 +1,47 @@
-lower_corner = {
-  x = 0;
-  y = 595; 
-  w = 800;
-  h = 5;
-  color = {255,255,255};
-  
-  load = function(self)
-    world:add(self, self.x, self.y, self.w, self.h);
-  end;
-  
-  draw = function(self)
-    love.graphics.setColor(self.color);
-    love.graphics.rectangle("fill", self.x, self.y, self.w, self.h);
-  end;
-  
-  
-  update = function(self, dt)
-    if tableName(self) == 'left_corner' then
-      print "Player 1 Did It";
-    end
-    
-    if tableName(self) == 'right_corner' then
-      print "Player 2 Did It";
-    end
-    
-  end;
-  
-};
+require 'util'
+bump = require 'bump'
+require 'padLeft'
+require 'padRight'
+require 'ball'
+require 'lowercorner'
+require 'uppercorner'
+require 'leftcorner'
+require 'rightcorner'
+--require 'surprises' TOBEDONE
+--require 'score'  TOBEDONE
 
-upper_corner = deepcopy(lower_corner);
-upper_corner.y = 0;
-
-left_corner = deepcopy(lower_corner);
-left_corner.x = 0;
-left_corner.y = 5;
-left_corner.w = 590;
+field={
+  
+  load = function ()
+    world = bump.newWorld();
+    padL:load();
+    padR:load();
+    ball:load();
+    lower_corner:load();
+    upper_corner:load();
+    left_corner:load();
+    right_corner:load();
+  end;
+  
+  draw = function()
+    padL:draw();
+    padR:draw();
+    ball:draw();
+    lower_corner:draw();
+    upper_corner:draw();
+    left_corner:draw();
+    right_corner:draw();
+  end;
+  
+  update = function(dt)
+    padL:update(dt);
+    padR:update(dt);
+    ball:update(dt);
+    lower_corner:update(dt);
+    upper_corner:update(dt);
+    left_corner:update(dt);
+    right_corner:update(dt);
+  end;
+  
+}
 

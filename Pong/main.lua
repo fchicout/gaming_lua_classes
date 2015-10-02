@@ -1,33 +1,17 @@
-require 'util'
-bump = require 'bump'
+--require 'menus' 
 require 'field'
-require 'padLeft'
-require 'padRight'
-require 'ball'
-
+--require 'persistence'
+--require 'onlineManager'
 
 function love.load()
-  world = bump.newWorld();
-  padL:load();
-  padR:load();
-  ball:load();
-  lower_corner:load();
-  upper_corner:load();
+  field:load();
 end
 
 function love.draw()
-  padL:draw();
-  padR:draw();
-  ball:draw();
-  lower_corner:draw();
-  upper_corner:draw();
+  field:draw();
 end
 
 function love.update(dt)
-  padL:update(dt);
-  padR:update(dt);
-  ball:update(dt);
-  lower_corner:update(dt);
-  upper_corner:update(dt);
+  field.update(dt);
 end
 
