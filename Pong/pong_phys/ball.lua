@@ -3,8 +3,8 @@ local Ball = {}
 
 function Ball:new(o)
   o=o or {
-    position = {x = love.graphics.getWidth()/2,
-                y = love.graphics.getHeight()/2 },
+    position = {x = 0,
+                y = 0 },
     velocity = {x = 5*math.random(-150, 150),
                 y = 5*math.random(-150, 150)},
     radius=20

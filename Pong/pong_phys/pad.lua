@@ -4,7 +4,8 @@ function Pad:new(o)
   o=o or {
     name = "", side = "left",
     offset = {x = 20, y = 0},
-    position = {x =10, y = love.graphics.getHeight()/2},
+    statusBarSize = 0,
+    position = {x = 10, y = 0},
     velocity = {x = 0, y = 100},
     size = {width = 30, height = 120},
     keys = {up = "up", down = "down", start="enter"},
@@ -25,6 +26,7 @@ function Pad:load(world)
     self.position.x = love.graphics.getWidth()-(self.offset.x+self.position.x+self.size.width)
     self.keys = {up = "w", down="s", start="p"}
   end
+  self.position.y = (love.graphics.getHeight()-self.statusBarSize)/2
   self.body = love.physics.newBody(world, self.position.x+(self.size.width/2), self.position.y+(self.size.height/2), "static")
   self.shape = love.physics.newRectangleShape(self.size.width, self.size.height)
   self.fixture = love.physics.newFixture(self.body, self.shape)
