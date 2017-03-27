@@ -3,6 +3,7 @@ local Pad = {}
 function Pad:new(o)
   o=o or {
     name = "", side = "left",
+    score = 0,
     offset = {x = 20, y = 0},
     statusBarSize = 0,
     position = {x = 10, y = 0},

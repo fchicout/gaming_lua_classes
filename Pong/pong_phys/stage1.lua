@@ -23,16 +23,18 @@ end
 function Stage:load()
   love.physics.setMeter(32)
   self.playerA.side = "left"
+  self.playerA.name = "Jogador A"
   self.playerA.statusBarSize = self.statusBar.height
   self.playerA:load(self.world)
   self.playerB.side = "right"
+  self.playerB.name = "Jogador B"
   self.playerB.statusBarSize = self.statusBar.height
   self.playerB:load(self.world)
   self.ball.position.x = love.graphics.getWidth()/2
   self.ball.position.y = (love.graphics.getHeight()-self.statusBar.height)/2
   self.ball:load(self.world)
+  self.statusBar:load(self.playerA, self.playerB)
 
-  self.statusBar:load()
 
   upBorder = {x = 0, y=0, width=love.graphics.getWidth(), height=self.xBorderHeight, idleColor={255,255,255}, collisionColor={} }
   upBorder.body = love.physics.newBody(self.world, upBorder.x+upBorder.width/2, upBorder.y+upBorder.height/2, "static")
